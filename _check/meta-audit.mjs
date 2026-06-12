@@ -35,6 +35,7 @@ const PAGES = [
   { url: '/demos/24-shabon.html', og: '24 夜のしゃぼん — hikari' },
   { url: '/demos/25-michishio.html', og: '25 月のみちしお — hikari' },
   { url: '/demos/26-shizuka.html', og: '26 しずかの森 — hikari' },
+  { url: '/demos/27-orgel.html', og: '27 星のオルゴール — hikari' },
 ];
 
 const browser = await chromium.launch();
