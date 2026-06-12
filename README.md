@@ -8,7 +8,7 @@
 
 > 暗闇に光を灯す、ブラウザ完結のインタラクティブ試作集。コンセプトは「1日10試作」。
 
-**🌌 デモ（部屋を暗くして全画面でどうぞ）: https://uzuchan.github.io/hikari.github.io/**
+**デモ（部屋を暗くして全画面でどうぞ）: https://uzuchan.github.io/hikari.github.io/**
 
 ## スクリーンショット
 
