@@ -69,8 +69,16 @@ for (const { url, og } of PAGES) {
   if (!meta.ogImage) problems.push('missing og:image');
 
   // 相対パスをページ URL に対して解決し、実際に 200 で取れることを確認
+  // og:image はデプロイ後に絶対URL(GitHub Pages)へ切替済み — 正準URLと一致し、実体 /assets/og.png がローカルにあることを確認
+  const OG_ABS = 'https://uzuchan.github.io/hikari.github.io/assets/og.png';
   for (const [label, href] of [['favicon', meta.favicon], ['og:image', meta.ogImage]]) {
     if (!href) continue;
+    if (/^https?:/.test(href)) {
+      if (href !== OG_ABS) problems.push(`${label} -> 絶対URLが正準と不一致: ${href}`);
+      const res = await page.request.get(`${BASE}/assets/og.png`);
+      if (res.status() !== 200) problems.push(`${label} -> ローカル実体 /assets/og.png が ${res.status()}`);
+      continue;
+    }
     const resolved = new URL(href, `${BASE}${url}`).href;
     const res = await page.request.get(resolved);
     if (res.status() !== 200) problems.push(`${label} -> ${resolved} returned ${res.status()}`);
